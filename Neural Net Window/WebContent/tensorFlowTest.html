@@ -26,7 +26,8 @@
     <img id="img" crossorigin src="" width="227" height="227"/>
     <!-- Load index.js after the content of the page -->
     <br><label for="image">Enter image url:</label><br>
-    <input type="text" id="image" name="image"><button id="sub" onclick="document.getElementById('img').src = document.getElementById('image').value">Submit</button><br>
+    <input type="text" id="image" name="image"><button id="sub" onclick="document.getElementById('img').src = document.getElementById('image').value">Submit</button>
+    <button id = "clear" onclick = "document.getElementById('image').value = ''">Clear</button><br>
     <button id = "Start" onclick="app()">Click me to start</button>
   </body>
 </html>
