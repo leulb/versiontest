@@ -15,7 +15,7 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Conv2D, Flatten, Dropout, MaxPooling2D
 
 def main():
-    hoTrainDir = "C:/Users?John Hughes/git/versiontest/Images/Hollenbeck/train"
+    hoTrainDir = "C:/Users/John Hughes/git/versiontest/Images/Hollenbeck/train"
     hoValDir = "C:/Users/John Hughes/git/versiontest/Images/Hollenbeck/test"
     sciTrainDir = "C:/Users/John Hughes/git/versiontest/Images/Science/train"
     sciValDir = "C:/Users/John Hughes/git/versiontest/Images/Science/test"
