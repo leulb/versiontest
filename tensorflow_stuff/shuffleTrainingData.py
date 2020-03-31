@@ -6,9 +6,9 @@ import random
 import shutil
 
 def main():
-    hoPath = 'C:/Users/John Hughes/git/versiontest/Images/Hollenbeck'
-    sciPath = 'C:/Users/John Hughes/git/versiontest/Images/Science'
-    for i in range(80):
+    hoPath = 'D:/Senior Capstone Stuff/git/versiontest/Images/Hollenbeck'
+    sciPath = 'D:/Senior Capstone Stuff/git/versiontest/Images/Science'
+    for i in range(100):
         curr = random.choice(os.listdir(hoPath))
         while curr == 'test' or curr == 'train':
             curr = random.choice(os.listdir(hoPath))
@@ -18,7 +18,7 @@ def main():
         while curr == 'test' or curr == 'train':
             curr = random.choice(os.listdir(hoPath))
         shutil.move(os.path.join(hoPath,curr),os.path.join(hoPath, 'test'))
-    for k in range(80):
+    for k in range(100):
         curr = random.choice(os.listdir(sciPath))
         while curr == 'test' or curr == 'train':
             curr = random.choice(os.listdir(sciPath))
