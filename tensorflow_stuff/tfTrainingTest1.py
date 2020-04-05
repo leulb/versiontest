@@ -12,10 +12,20 @@ from PIL import Image
 
 import tensorflow as tf
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
+from tensorflow.keras.preprocessing import image
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Conv2D, Flatten, Dropout, MaxPooling2D
 
-
+def getPrediction(model, img_path):
+    img = image.load_img(img_path, target_size = (224, 224))
+    img = image.img_to_array(img)
+    img = np.expand_dims(img, axis=0)
+    arr = model.predict_classes(img)
+    prdNum = arr[0][0]
+    if prdNum == 0:
+        return "Hollenbeck"
+    else:
+        return "Science"
 
 def main():
     data_dir = pathlib.Path("D:/Senior Capstone Stuff/git/versiontest/Images")
@@ -68,6 +78,6 @@ def main():
         validation_data=test_data_gen,
         validation_steps=total_test // 10)
 
-    
+    return model, history
         
-main()
+m,h = main()
