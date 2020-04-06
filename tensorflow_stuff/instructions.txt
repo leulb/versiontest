@@ -18,7 +18,7 @@ def getPrediction(model, img_path):
 jFile = open('FirstModel.json','r') #Assuming that your common directory is in tensorflow_stuff
 jModel = jFile.read()
 jFile.close()
-model = model_from_jason(jModel)
+model = model_from_json(jModel)
 model.load_weights('FirstModelWeights.h5')
 
 Then, in order to test it on one of our images, simply use:
