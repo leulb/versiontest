@@ -1,0 +1,25 @@
+In order to save the model to github while following it's file size limit of 1MB, I had to separate the model into its actual model and its weights
+In order to load it into python, and test it, you're going to need to use the shell and use these commands:
+import os
+import numpy as np
+import tensorflow as tf
+from tensorflow.keras.preprocessing import image
+from tensorflow.keras.models import model_from_json
+def getPrediction(model, img_path):
+  img = image.load_img(img_path, target_size = (224, 224))
+  img = image.img_to_array(img)
+  img = np.expand_dims(img, axis = 0)
+  arr = model.predict_classes(img)
+  prdNum = arr[0][0]
+  if prdNum == 0:
+    return "Hollenbeck"
+  else:
+    return "Science"
+jFile = open('FirstModel.json','r') #Assuming that your common directory is in tensorflow_stuff
+jModel = jFile.read()
+jFile.close()
+model = model_from_json(jModel)
+model.load_weights('FirstModelWeights.h5')
+
+Then, in order to test it on one of our images, simply use:
+getPrediction(model, <filepath of one of the images we have of either buildings>)
