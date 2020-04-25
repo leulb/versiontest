@@ -6,27 +6,21 @@ import random
 import shutil
 
 def main():
-    hoPath = 'D:/Senior Capstone Stuff/git/versiontest/Images/Hollenbeck'
-    sciPath = 'D:/Senior Capstone Stuff/git/versiontest/Images/Science'
-    for i in range(100):
-        curr = random.choice(os.listdir(hoPath))
-        while curr == 'test' or curr == 'train':
-            curr = random.choice(os.listdir(hoPath))
-        shutil.move(os.path.join(hoPath,curr),os.path.join(hoPath, 'train'))
-    for j in range(20):
-        curr = random.choice(os.listdir(hoPath))
-        while curr == 'test' or curr == 'train':
-            curr = random.choice(os.listdir(hoPath))
-        shutil.move(os.path.join(hoPath,curr),os.path.join(hoPath, 'test'))
-    for k in range(100):
-        curr = random.choice(os.listdir(sciPath))
-        while curr == 'test' or curr == 'train':
-            curr = random.choice(os.listdir(sciPath))
-        shutil.move(os.path.join(sciPath,curr),os.path.join(sciPath, 'train'))
-    for l in range(20):
-        curr = random.choice(os.listdir(sciPath))
-        while curr == 'test' or curr == 'train':
-            curr = random.choice(os.listdir(sciPath))
-        shutil.move(os.path.join(sciPath,curr),os.path.join(sciPath, 'test'))
+    basePath = 'C:/Capstone Git/versiontest/NewImages'
+    buildings = ['Blair','Hollenbeck','Koch','Krieg','Science','Synod','Zimmerman']
+    for building in buildings:
+        currPath = os.path.join(basePath, building)
+        os.mkdir(os.path.join(currPath, 'train'))
+        os.mkdir(os.path.join(currPath, 'test'))
+        for i in range(175):
+            curr = random.choice(os.listdir(currPath))
+            while curr == 'test' or curr == 'train':
+                curr = random.choice(os.listdir(currPath))
+            shutil.move(os.path.join(currPath, curr),os.path.join(currPath, 'train'))
+        for j in range(50):
+            curr = random.choice(os.listdir(currPath))
+            while curr == 'test' or curr == 'train':
+                curr = random.choice(os.listdir(currPath))
+            shutil.move(os.path.join(currPath, curr),os.path.join(currPath, 'test'))
 
 main()
