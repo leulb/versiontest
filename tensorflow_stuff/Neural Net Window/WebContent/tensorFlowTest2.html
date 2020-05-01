@@ -9,7 +9,8 @@
     	  document.getElementById('console').innerHTML = 'Loading model..';
 
     	  // Load the model.
-    	  net = await mobilenet.load();
+       const model = await tf.loadLayersModel('tfjs_model/model.json');
+    	  //net = await mobilenet.load();
     	  document.getElementById('console').innerHTML = 'Model Successfully Loaded';
 
     	  // Make a prediction through the model on our image.
