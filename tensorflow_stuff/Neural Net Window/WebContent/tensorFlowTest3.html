@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <script>
+    async function app() {
+    	  document.getElementById('console').innerHTML= 'Loading model..';
+
+    	  // Load the model.
+          const net = await tf.loadLayersModel('https://cdn.jsdelivr.net/gh/leulb/versiontest/tensorflow_stuff/Neural%20Net%20Window/WebContent/tfjs_model2/model.json')
+    	  document.getElementById('console').innerHTML = 'Model Successfully Loaded';
+
+    	  // Make a prediction through the model on our image.
+    	  const imgEl = document.getElementById('img');
+          const imgTens1 = tf.browser.fromPixels(imgEl)
+          const imgTens2 = imgTens1.expandDims()
+    	  const result = await net.predict(imgTens2).dataSync()[0].argMax();
+    	  console.log(result);
+          var building = "Science";
+          if (result <= 0){
+	      building = "Hollenbeck";
+          }
+    	  document.getElementById('console').innerHTML = building;
+    	}
+    </script>
+  </head>
+  <body>
+    <video autoplay id="webcam" width="224" height="224"></video>
+    <p id="console">Waiting</p>
+    <!-- Add an image that we will use to test -->
+    <img id="img" width="224" height="224"/>
+    <script>
+    var loadFile = function(event) {
+	   var image = document.getElementById('img');
+           img.src = URL.createObjectURL(event.target.files[0]);
+    }
+    </script>
+    <!-- Load index.js after the content of the page -->
+    <br><label for="image">Enter image url:</label><br>
+    <input type="file" accept="image/*" id="image" name="image" onchange="loadFile(event)"><br>
+    <button id = "Start" onclick="app()">Click me to start</button>
+  </body>
+</html>
