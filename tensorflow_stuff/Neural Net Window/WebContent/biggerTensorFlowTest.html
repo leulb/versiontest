@@ -1,21 +1,42 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.7.4"></script>
+    <script>
+    function indexOfMax(arr) {
+      if(arr.length == 0) {
+        return -1;
+      }
+      var max = arr[0];
+      var maxIndex = 0;
+
+      for (var i = 1; i < arr.length; i++) {
+        if (arr[i] > max) {
+          maxIndex = i;
+          max = arr[i];
+        }
+      }
+      return maxIndex;
+    }
+    </script>
     <script>
     async function app() {
     	  document.getElementById('console').innerHTML= 'Loading model..';
 
     	  // Load the model.
-          const net = await tf.loadLayersModel('https://cdn.jsdelivr.net/gh/leulb/versiontest@larger-neural-net/tensorflow_stuff/Neural Net Window/tfjs_model/model.json')
+          const net = await tf.loadLayersModel('https://cdn.jsdelivr.net/gh/leulb/versiontest@larger-neural-net/tensorflow_stuff/Neural Net Window/tfjs_model2/model.json');
     	  document.getElementById('console').innerHTML = 'Model Successfully Loaded';
 
     	  // Make a prediction through the model on our image.
+        const poss = ["Blair","Hollenbeck","Koch","Krieg","Science","Synod","Zimmerman"];
     	  const imgEl = document.getElementById('img');
-          const imgTens1 = tf.browser.fromPixels(imgEl)
-          const imgTens2 = imgTens1.expandDims()
-    	  const result = await net.predict(imgTens2).dataSync()[0];
-    	  console.log(result);
+          const imgTens1 = tf.browser.fromPixels(imgEl);
+          const imgTens2 = imgTens1.expandDims();
+    	  const arr = await net.predict(imgTens2).dataSync();
+        const guessNum = indexOfMax(arr);
+        const guess = poss[guessNum];
+    	  console.log(arr);
+        document.getElementById('console').innerHTML = guess;
     	}
     </script>
   </head>
