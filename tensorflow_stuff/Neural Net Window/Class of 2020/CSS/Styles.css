@@ -1,0 +1,93 @@
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 30%;
+}
+  .first {
+  display: block;
+  margin-left: inherit;
+  margin-right: inherit;
+  border-style: groove;
+  border-image-width: auto;
+  border: 10mm ridge gold;
+  width: 100%;
+
+}
+button{
+  font-size: 300%;
+  font-style: normal;
+  text-align: center;
+  width:50%;
+  margin-left:auto;
+  margin-right: auto;
+  color: black;
+  border: 10mm ridge
+
+
+}
+label{
+  font-size: 300%;
+  font-style: normal;
+  text-align: center;
+  width:50%;
+  margin-left:auto;
+  margin-right: auto;
+  color: white;
+  border: 10mm ridge gold
+
+}
+a{
+  font-size: 300%;
+  font-style: normal;
+  text-align: center;
+  width:50%;
+  margin-left:auto;
+  margin-right: auto;
+  color: white;
+  border: 10mm ridge gold
+
+}
+.text{
+  font-family: Walbaum Heading;
+  font-size: 300%;
+  font-style: normal;
+  text-align: center;
+  width:50%;
+  margin-left:auto;
+  margin-right: auto;0
+  color: white;
+
+}
+.headers{
+  color: #f2f2f2;
+  background: red;
+  font-size: 50px;
+  font-family: 'Libre Baskerville', serif;
+  font-style: normal;
+  text-align: center;
+  width:50%;
+  margin-left:auto;
+  margin-right: auto;
+
+
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Helvetica;
+  background-color: red;
+}
+.buldings{
+  font-family: Walbaum Heading;
+  font-size: 150%;
+  font-style: normal;
+  text-align: center;
+  width:70%;
+  margin-left:auto;
+  margin-right: auto;
+  color: white;
+
+
+}

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+
+<HTML>
+
+<head>
+  <title>Wittenberg University Self-Tour</title>
+  <link href="CSS/styles.css" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+
+  <script>
+    function indexOfMax(arr) {
+      if (arr.length == 0) {
+        return -1;
+      }
+      var max = arr[0];
+      var maxIndex = 0;
+
+      for (var i = 1; i < arr.length; i++) {
+        if (arr[i] > max) {
+          maxIndex = i;
+          max = arr[i];
+        }
+      }
+      return maxIndex;
+    }
+  </script>
+  <script>
+    async function app() {
+      document.getElementById('console').innerHTML = 'Loading model..';
+
+      // Load the model.
+      const net = await tf.loadLayersModel('https://cdn.jsdelivr.net/gh/leulb/versiontest@master/tensorflow_stuff/Neural Net Window/test_tfjs_model/model.json');
+      document.getElementById('console').innerHTML = 'Model Successfully Loaded';
+
+      // Make a prediction through the model on our image.
+      const poss = ["Blair", "Hollenbeck", "Koch", "Krieg", "Science", "Synod", "Zimmerman"];
+      const imgEl = document.getElementById('img');
+      const imgTens1 = tf.browser.fromPixels(imgEl);
+      const imgTens2 = imgTens1.expandDims();
+      const arr = await net.predict(imgTens2).dataSync();
+      const guessNum = indexOfMax(arr);
+      const guess = poss[guessNum];
+      console.log(arr);
+      document.getElementById('console').innerHTML = guess;
+      console.log(guessNum);
+      if (guess === "Blair") {
+        window.location = "C:/Users/HAPPY2019/Class of 2020/blair.html";
+      }if (guess === "Hollenbeck") {
+        window.location = "C:/Users/HAPPY2019/Class of 2020/hollenbeck.html";
+      }if (guess === "Koch") {
+        window.location = "C:/Users/HAPPY2019/Class of 2020/koch.html";
+      }if (guess === "Krieg") {
+        window.location = "C:/Users/HAPPY2019/Class of 2020/krieg.html";
+      }if (guess === "Science") {
+        window.location = "C:/Users/HAPPY2019/Class of 2020/scince.html";
+      }if (guess === "Synod") {
+        window.location = "C:/Users/HAPPY2019/Class of 2020/synod.html";
+      }if (guess === "Zimmerman") {
+        window.location = "C:/Users/HAPPY2019/Class of 2020/zimmerman.html";
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <img id="Logo" src="Self-Tour(2).jpg" alt="Witt-logo" class="center">
+  <br>
+
+  <h2 class="text" color="white"> This self-tour website serves well in the absence of tourguide enabling you to walk with your own pace.</h2>
+  <br>
+  <script type="text/javascript" src='JS/Slide.js'></script>
+
+  <img name="slide" width="500" height="500" class="first" border="10mm ridge black" />
+  <h3 class="text" background-color="black">Click Bellow to scan your first bulding</h3>
+  <p id="console" class="center">Waiting</p>
+  <!-- Add an image that we will use to test -->
+  <img id="img" width="224" height="224" style="display: none;" />
+  <script>
+    var loadFile = function(event) {
+      var image = document.getElementById('img');
+      img.src = URL.createObjectURL(event.target.files[0]);
+    }
+  </script>
+  <!-- Load index.js after the content of the page -->
+  <br>
+  <br>
+  <p><label for="image" style="cursor: pointer;" class="center">Scan Bulding</label></p>
+  <input class="first" type="file" accept="image/*" id="image" name="image" onchange="loadFile(event)" style="display: none;" />
+  <button class="center" id="Start" onclick="app()">Start The App</button>
+
+</body>
+
+</HTML>

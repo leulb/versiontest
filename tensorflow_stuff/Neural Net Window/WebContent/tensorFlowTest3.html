@@ -14,7 +14,7 @@
     	  const imgEl = document.getElementById('img');
           const imgTens1 = tf.browser.fromPixels(imgEl)
           const imgTens2 = imgTens1.expandDims()
-    	  const result = await net.predict(imgTens2).dataSync()[0].argMax();
+    	  const result = await net.predict(imgTens2).dataSync()[0];
     	  console.log(result);
           var building = "Science";
           if (result <= 0){
